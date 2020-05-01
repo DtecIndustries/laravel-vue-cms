@@ -37,6 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /* user roles */
     public function roles()
     {
         return $this->belongsToMany(Role::class);
@@ -62,5 +63,11 @@ class User extends Authenticatable
     public function hasRole($role): bool
     {
         return (bool) $this->roles()->where('name', $role)->first();
+    }
+
+    /* posts */
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }
