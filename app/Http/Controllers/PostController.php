@@ -7,6 +7,20 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    /* show all */
+    public function all()
+    {
+        return view('landing', [
+            'posts' => Post::latest()->paginate(5)
+        ]);
+    }
+
+    /* show single */
+    public function single(Post $post)
+    {
+        return view('single', compact('post'));
+    }
+
     /**
      * Display a listing of the resource.
      *
