@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class AppController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -23,8 +23,14 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->checkRoles('admin');
-
         return view('home');
+        
+        /*if ($request->user()->hasRole('user')) {
+            return view('home');
+        }*/
+
+        /*if ($request->user()->hasRole('admin')) {
+            return redirect('/admin/dashboard');
+        }*/
     }
 }
