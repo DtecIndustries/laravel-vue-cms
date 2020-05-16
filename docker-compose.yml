@@ -5,8 +5,8 @@ services:
   #php service
   app:
     build:
-      context: docker/php
-      dockerfile: Dockerfile
+      context: '.'
+      dockerfile: docker/php/Dockerfile
     image: digitalocean.com/php
     container_name: app
     restart: always
