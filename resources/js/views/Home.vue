@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import PostCard from './PostCard.vue'
+import PostCard from '../components/PostCard.vue'
 import axios from 'axios'
 
 
@@ -23,6 +23,7 @@ export default {
     axios
       .get('/api/posts')
       .then(response=>{
+        console.log(response.data);
         this.posts = response.data.data;
       })
       .catch(err => {
